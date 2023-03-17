@@ -1,0 +1,215 @@
+﻿#content-header {
+    background: #2a8dd4;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    background-image: url('../images/robotai80x80.png');
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+#img-center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+#content-main {
+    background: #fff;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+}
+
+.img-container {
+    position: relative;
+    text-align: center;
+}
+
+.padding {
+    padding: 15px;
+}
+/*.image-styled {
+    background-position: center;
+    background-size: cover;
+    background-image: url("Images/tiny_robot.png"); 
+    display: flex;
+    height: 100px ;
+    width: 100px;
+    transition: background 0.5s linear;
+}*/
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
+.active, .accordion:hover {
+    background-color: #87ceeb;
+}
+
+.accordion:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+.active:after {
+    content: "\2212";
+}
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+
+.buttonstyle {
+    background-color: #1e90ff;
+    color: white;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 270px;
+    height: 30px;
+}
+
+    .buttonstyle:hover {
+        background-color: #4682b4;
+    }
+
+.loader {
+    border: 2px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 2px solid blue;
+    border-right: 2px solid green;
+    border-bottom: 2px solid red;
+    border-left: 2px solid pink;
+    visibility:hidden;
+    width: 30px;
+    height: 30px;
+    position: sticky;
+    left: 50%;
+    top: 50%;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+.text-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Settings */
+#myUL {
+    margin: 0;
+    padding: 0;
+}
+
+.caret {
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+}
+
+    .caret::before {
+        content: "\25B6";
+        color: black;
+        display: inline-block;
+        margin-right: 6px;
+    }
+
+.caret-down::before {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Safari */
+    transform: rotate(90deg);
+}
+
+.nested {
+    display: none;
+}
+
+.caret-active {
+    display: block;
+}
+
+/* Settings */
+div.settings-pos {
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: 100px 300px;
+    gap: 3px;
+    padding: 3px;
+    background:white
+}
+
+
+
+
+/* Error dialog */
+#alert-message {
+    padding: 20px;
+    background-color: #f5cccc;
+    color: black;
+    top: 50%;
+    position: absolute;
+    display: none;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: black;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .closebtn:hover {
+        color: white;
+    }
