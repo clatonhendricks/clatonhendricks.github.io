@@ -26,6 +26,7 @@ var messageBanner;
             if (Office.context.requirements.isSetSupported('WordApi', '1.1')) {
                 // Do something that is only available via the new APIs.
                 $('#btnrewrite').click(btnrewrite);
+                $('#btnInsert').click(btnInsert);
                 $('#btnIdeas').click(btnIdeas);
                 $('#btnSaveSettings').click(btnSaveSettings);
                 $('#supportedVersion').html('This code is using Word 2016 or later.');
@@ -83,6 +84,10 @@ var messageBanner;
 
     function btnrewrite() {
         write("", false);
+        const buttonInsert = document.getElementById('btnInsert')
+
+        if (buttonInsert.style.visibility == "visible") { buttonInsert.style.visibility = "hidden"; };
+
         if (OKey != null) {
             document.getElementById('circleloader-1').style.visibility = "visible";
             var prompt = "Rewrite the following \n";
@@ -103,11 +108,15 @@ var messageBanner;
                         callGPT3(prompt, "circleloader-1").then(
                             function (value) {
                                 write(returnResult, false);
+                                //button.id = 'btnInsert';
+                                //button.textContent = "Insert into document";
                                 document.getElementById('circleloader-1').style.visibility = "hidden";
+                                document.getElementById('btnInsert').style.visibility = "visible";
                             },
                             function (error) {
                                 errorHandler(error.message);
                                 document.getElementById('circleloader-1').style.visibility = "hidden";
+                                document.getElementById('btnInsert').style.visibility = "hidden";
                             }
                         );
 
@@ -120,6 +129,30 @@ var messageBanner;
             errorHandler("Please add a OpenAI key in the Settings.");
 
         }
+
+    }
+
+    async function btnInsert() {
+
+
+
+        //const body = context.document.body;
+        //body.insertText(returnResult, Word.InsertLocation.end);
+        //context.sync();
+
+        await Word.run(async (context) => {
+
+            // Create a proxy object for the document body.
+            const body = context.document.body;
+
+            // Queue a command to insert text in to the beginning of the body.
+            body.insertText(returnResult, Word.InsertLocation.end);
+
+            // Synchronize the document state by executing the queued commands,
+            // and return a promise to indicate task completion.
+            await context.sync();
+           
+        });
 
     }
 
